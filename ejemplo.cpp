@@ -11,7 +11,8 @@ struct EMP{
 
 int main (){
     EMP EMPLEADOS[100];
-    int n;
+    int n, vtot=0,mayorvent=0,mayor=0;
+    float totalVentas[100];
     cout<<"Ingresa el numero de empleados: ";
     cin>>n;
     for (int i=0; i<n; i++){
@@ -24,19 +25,25 @@ int main (){
         for (int j=0; j<12; j++){
             cout<<"Mes "<<j+1<<": ";
             cin>>EMPLEADOS[i].ven[j];
+            totalVentas[i]=EMPLEADOS[i].ven[j]+totalVentas[i];
         }
             cout<<"Ingresa el salario del empleado: ";
             cin>>EMPLEADOS[i].salario;
     }
     for (int i=0; i<n; i++){
-        cout<<"Empleado Numero: "<<EMPLEADOS[i].num<<endl;
-        cout<<"Nombre: "<<EMPLEADOS[i].nom<<endl;
+        if (totalVentas[i]>mayorvent){
+            mayorvent=totalVentas[i];
+            mayor=i;
+        }
+    }
+        cout<<"Empleado Numero: "<<EMPLEADOS[mayor].num<<endl;
+        cout<<"Nombre: "<<EMPLEADOS[mayor].nom<<endl;
         cout<<"Ventas: ";
         for (int j=0; j<12; j++){
-            cout<<EMPLEADOS[i].ven[j]<<" ";
+            cout<<EMPLEADOS[mayor].ven[j]<<" ";
         }
-            cout<<endl;
-            cout<<"Salario: "<<EMPLEADOS[i].salario<<endl;
-    }
+        cout<<endl;
+        cout<<"Salario: "<<EMPLEADOS[mayor].salario<<endl;
+        
     return 0;
 }
