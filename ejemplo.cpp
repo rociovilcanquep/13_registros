@@ -11,7 +11,7 @@ struct EMP{
 
 int main (){
     EMP EMPLEADOS[100];
-    int n, vtot=0,mayorvent=0,mayor=0;
+    int n;
     float totalVentas[100];
     cout<<"Ingresa el numero de empleados: ";
     cin>>n;
@@ -34,6 +34,7 @@ int main (){
             }
     }
     for (int i=0; i<n; i++){   
+        if (EMPLEADOS[i].ven[11]<30){
         cout<<"Empleado Numero: "<<EMPLEADOS[i].num<<endl;
         cout<<"Nombre: "<<EMPLEADOS[i].nom<<endl;
         cout<<"Ventas: ";
@@ -43,5 +44,6 @@ int main (){
         cout<<endl;
         cout<<"Salario: "<<EMPLEADOS[i].salario<<endl;
     }   
+    }
     return 0;
 }
