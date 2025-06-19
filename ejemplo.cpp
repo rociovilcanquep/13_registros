@@ -29,21 +29,19 @@ int main (){
         }
             cout<<"Ingresa el salario del empleado: ";
             cin>>EMPLEADOS[i].salario;
+            if (totalVentas[i]>100){
+                EMPLEADOS[i].salario=EMPLEADOS[i].salario*1.1;
+            }
     }
-    for (int i=0; i<n; i++){
-        if (totalVentas[i]>mayorvent){
-            mayorvent=totalVentas[i];
-            mayor=i;
-        }
-    }
-        cout<<"Empleado Numero: "<<EMPLEADOS[mayor].num<<endl;
-        cout<<"Nombre: "<<EMPLEADOS[mayor].nom<<endl;
+    for (int i=0; i<n; i++){   
+        cout<<"Empleado Numero: "<<EMPLEADOS[i].num<<endl;
+        cout<<"Nombre: "<<EMPLEADOS[i].nom<<endl;
         cout<<"Ventas: ";
         for (int j=0; j<12; j++){
-            cout<<EMPLEADOS[mayor].ven[j]<<" ";
+            cout<<EMPLEADOS[i].ven[j]<<" ";
         }
         cout<<endl;
-        cout<<"Salario: "<<EMPLEADOS[mayor].salario<<endl;
-        
+        cout<<"Salario: "<<EMPLEADOS[i].salario<<endl;
+    }   
     return 0;
 }
