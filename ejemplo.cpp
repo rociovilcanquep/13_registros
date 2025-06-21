@@ -11,7 +11,7 @@ struct EMP{
 
 int main (){
     EMP EMPLEADOS[100];
-    int n;
+    int n, mayorvent=0, mayor;
     float totalVentas[100];
     cout<<"Ingresa el numero de empleados: ";
     cin>>n;
@@ -22,6 +22,7 @@ int main (){
         cin.ignore();
         getline(cin,EMPLEADOS[i].nom);
         cout<<"Ingresa el numero de ventas del empleado:"<<endl;
+        totalVentas[i] = 0;
         for (int j=0; j<12; j++){
             cout<<"Mes "<<j+1<<": ";
             cin>>EMPLEADOS[i].ven[j];
@@ -33,6 +34,7 @@ int main (){
                 EMPLEADOS[i].salario=EMPLEADOS[i].salario*1.1;
             }
     }
+    cout<<"Empleados que tuvieron ventas menores a 30 en el mes de diciembre: "<<endl;
     for (int i=0; i<n; i++){   
         if (EMPLEADOS[i].ven[11]<30){
         cout<<"Empleado Numero: "<<EMPLEADOS[i].num<<endl;
@@ -43,7 +45,19 @@ int main (){
         }
         cout<<endl;
         cout<<"Salario: "<<EMPLEADOS[i].salario<<endl;
-    }   
+        }   
     }
+    for (int i=0; i<n; i++){
+        if (totalVentas[i]>mayorvent){
+            mayorvent=totalVentas[i];
+            mayor=i;
+        }
+    }
+    cout<<"El empleado con mayores ventas es: "<<EMPLEADOS[mayor].nom<<endl;
+    cout<<"Ventas: ";
+        for (int j=0; j<12; j++){
+            cout<<EMPLEADOS[mayor].ven[j]<<" ";
+        }
+    cout<<"Ventas totales: "<<totalVentas[mayor];
     return 0;
 }
