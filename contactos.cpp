@@ -39,6 +39,16 @@ int main(){
         switch(op){
             case 0:
                 cout<<"Seguro que quiere salir (S/N): ";
+                cin>>op1;
+                switch (op1){
+                    case 'S':
+                        cout<<"Fin del programa"<<endl;
+                        system("pause");
+                        break;
+                    case 'N':
+                        op=op+1;
+                        break;
+                }         
                 break;
             case 1:
                 cout<<"Ingrese los datos de un usuario: "<<endl;
@@ -56,10 +66,10 @@ int main(){
                 system("pause");
                 break;
             case 2:
-                cout<<"Numero de contacto que quieres modificar (0,1,2,3,...): "<<endl;
+                cout<<"Numero de contacto que quieres modificar (1,2,3,...): "<<endl;
                 cin>>num;
                 for (int a=0; a<=n; a++){
-                    if (a==num){
+                    if (a==num-1){
                         cout<<"Menu de opciones (seleccione lo que desea modificar) --------------------------------------"<<endl;
                         cout<<"1. Nombre del contacto: "<<endl;
                         cout<<"2. El sexo del contacto (M/F): "<<endl; 
@@ -93,7 +103,7 @@ int main(){
                 break;
             case 3:
                 for(int i = 0; i < n; i++){
-                    cout<<"Contacto #"<<i<<endl;
+                    cout<<"Contacto #"<<i+1<<endl;
                     imprimeContacto(lista[i]);
                     cout<<endl;
                 }
@@ -110,7 +120,13 @@ int main(){
                 system("pause");
                 break;
             case 5:
-                
+                cout<<"Ingrese el numero del usuario que quiere eliminar: ";
+                cin>>num;
+                for(int i=num-1; i < n; i++){
+                    lista[i]=lista[i+1];
+                }
+                n=n-1;
+                system ("pause");
                 break;
             case 6:
                 cout<<"Ingrese su correo electronico"<<endl;
