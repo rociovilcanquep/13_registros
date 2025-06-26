@@ -19,8 +19,8 @@ void imprimeContacto(contactoEmail &);
 
 int main(){
     int n, op,op2,num;
-    string nom, user, domain;
-    char sex;
+    string nom, user, domain, serv;
+    char sex, op1;
     int edad;
     correo email;
     contactoEmail cont, lista[100];
@@ -38,6 +38,7 @@ int main(){
         cout<<"Elige una opcion: "; cin>>op;
         switch(op){
             case 0:
+                cout<<"Seguro que quiere salir (S/N): ";
                 break;
             case 1:
                 cout<<"Ingrese los datos de un usuario: "<<endl;
@@ -83,6 +84,9 @@ int main(){
                             cout<<"\tIngrese el usuario: "; cin>>user;
                             cout<<"\tIngrese el dominio: "; cin>>domain;
                         break;
+                        default:
+                            cout<<"opcion invalida!"<<endl;
+                            break;
                         }
                     }
                 }
@@ -96,12 +100,30 @@ int main(){
                 system ("pause");
                 break;
             case 4:
-                
+                cout<<"Ingrese el servidor: ";
+                cin>>serv;
+                for (int i=0; i<n ; i++){
+                    if (serv==lista[i].email.domain){
+                        imprimeContacto(lista[i]);
+                    }
+                }
+                system("pause");
                 break;
             case 5:
                 
                 break;
             case 6:
+                cout<<"Ingrese su correo electronico"<<endl;
+                cout<<"Ingrese el usuario: ";
+                cin>>user;
+                cout<<"Ingrese el dominio: ";
+                cin>>domain;
+                for (int i=0; i<n ; i++){
+                    if (user==lista[i].email.user && domain==lista[i].email.domain){
+                        imprimeContacto(lista[i]);
+                    }
+                }
+                system("pause");
                 
                 break;
             default:
